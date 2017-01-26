@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var btn: UIButton!
     @IBOutlet weak var lbl: UILabel!
     
+    var index = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,16 +27,22 @@ class ViewController: UIViewController {
 
     @IBAction func btnPressed(_ sender: Any) {
         
-        let message1 = "You Are Da Bomb!"
-        let message2 = "You Are Great!"
-        let message3 = "You Are Amazing!"
+        let messages = ["You Are Da Bomb!",
+                        "You Are Great!",
+                        "You Are Amazing!",
+                        "You're doing great",
+                        "When the genius bar needs help they call you!",
+                        "You Brighten my day!",
+                        "I can't wait to use your app!" ]
         
-        if lbl.text == message1 {
-            lbl.text = message2
-        } else if lbl.text == message2 { lbl.text = message3 }
-        else {
-            lbl.text = message1
+            lbl.text = messages[index]
+
+        
+            if index == messages.count - 1 {
+            index = 0
+            } else {
+            index = index + 1
         }
-    }
+            }
 }
 
