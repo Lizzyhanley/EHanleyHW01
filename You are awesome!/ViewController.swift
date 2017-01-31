@@ -10,9 +10,9 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-
+    
     // MARK: Properties
-
+    
     @IBOutlet weak var btn: UIButton!
     @IBOutlet weak var lbl: UILabel!
     @IBOutlet weak var awesomeImg: UIImageView!
@@ -25,17 +25,17 @@ class ViewController: UIViewController {
     var lastImg = -1
     var numOfSounds = 12
     var lastSound = -1
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func playSound(soundName: String) {
         
         if let sound = NSDataAsset(name: soundName) {
@@ -84,21 +84,25 @@ class ViewController: UIViewController {
         random = nonRepeatedRandom(last: &lastImg, range: numOfImgs)
         awesomeImg.image = UIImage(named: "img" + String(random))
         
-
+        
         if soundSwitch.isOn == true {
-        random = nonRepeatedRandom(last: &lastSound, range: numOfSounds)
-        playSound(soundName: "sound" + String(random))
+            random = nonRepeatedRandom(last: &lastSound, range: numOfSounds)
+            playSound(soundName: "sound" + String(random))
         }
-}
+    }
     
     
     @IBAction func soundSwitchPressed(_ sender: UISwitch) {
-        awesomePlayer.stop()
+        if soundSwitch.isOn == false {
+            if lastSound != -1 {
+                awesomePlayer.stop()
+            }
+            
+        }
+        
     }
     
 }
-
-
 
 
 

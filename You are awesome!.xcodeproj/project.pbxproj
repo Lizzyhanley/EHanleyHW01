@@ -146,6 +146,7 @@
 				TargetAttributes = {
 					7EE9E3DA1E3941C3002B3E17 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 883EDAGRH8;
 						ProvisioningStyle = Automatic;
 					};
 					7EE9E3EE1E3941C3002B3E17 = {
@@ -339,7 +340,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 883EDAGRH8;
 				INFOPLIST_FILE = "You are awesome!/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hanley.You-are-awesome-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -351,7 +355,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 883EDAGRH8;
 				INFOPLIST_FILE = "You are awesome!/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hanley.You-are-awesome-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -406,6 +413,7 @@
 				7EE9E3FA1E3941C3002B3E17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EE9E3FB1E3941C3002B3E17 /* Build configuration list for PBXNativeTarget "You are awesome!Tests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +422,7 @@
 				7EE9E3FD1E3941C3002B3E17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
