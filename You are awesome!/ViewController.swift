@@ -11,9 +11,12 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
+    // MARK: Properties
+
     @IBOutlet weak var btn: UIButton!
     @IBOutlet weak var lbl: UILabel!
     @IBOutlet weak var awesomeImg: UIImageView!
+    @IBOutlet weak var soundSwitch: UISwitch!
     
     var awesomePlayer = AVAudioPlayer()
     
@@ -49,7 +52,18 @@ class ViewController: UIViewController {
         
     }
     
+    func nonRepeatedRandom(last: inout Int, range: Int) -> Int {
+        var random: Int = Int(arc4random_uniform(UInt32(range)))
+        
+        while random == last {
+            random = Int(arc4random_uniform(UInt32(range)))
+        }
+        last = random
+        
+        return random
+    }
     
+    // MARK: Actions
     @IBAction func btnPressed(_ sender: Any) {
         
         let messages = ["You Are Da Bomb!",
@@ -61,32 +75,27 @@ class ViewController: UIViewController {
                         "I Think You're Remarkable!!",
                         "You Are Fantastic!" ]
         
-        var randomIndex: Int = Int(arc4random_uniform(UInt32(messages.count)))
-        var randomImg: Int = Int(arc4random_uniform(UInt32(numOfImgs)))
-        var randomSound: Int = Int(arc4random_uniform(UInt32(numOfSounds)))
+        var random: Int
         
-        while  randomIndex == lastIndex {
-            randomIndex = Int(arc4random_uniform(UInt32(messages.count)))
-        }
-            lbl.text = messages[randomIndex]
-            lastIndex = randomIndex
+        random = nonRepeatedRandom(last: &lastIndex, range: messages.count)
+        lbl.text = messages[random]
         
-        while  randomImg == lastImg {
-            randomImg = Int(arc4random_uniform(UInt32(numOfImgs)))
-        }
         awesomeImg.isHidden = false
-        awesomeImg.image = UIImage(named: "img" + String(randomImg))
-        lastImg = randomImg
-    
-        //the code for making sure sounds aren't repeated follows
-           
-        while  randomSound == lastSound {
-        randomSound = Int(arc4random_uniform(UInt32(numOfSounds)))
+        random = nonRepeatedRandom(last: &lastImg, range: numOfImgs)
+        awesomeImg.image = UIImage(named: "img" + String(random))
+        
+
+        if soundSwitch.isOn == true {
+        random = nonRepeatedRandom(last: &lastSound, range: numOfSounds)
+        playSound(soundName: "sound" + String(random))
         }
-            playSound(soundName: "sound" + String(randomSound))
-            lastSound = randomSound
-            
 }
+    
+    
+    @IBAction func soundSwitchPressed(_ sender: UISwitch) {
+        awesomePlayer.stop()
+    }
+    
 }
 
 
